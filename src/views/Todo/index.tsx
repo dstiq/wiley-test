@@ -3,9 +3,10 @@ import styles from './index.module.css';
 import clsx from 'clsx';
 import {ReactComponent as LogoClose} from '../../resources/svg/close-button.svg';
 
+type TTaskValue = string;
 type TTask = {
     key: string
-    value: string
+    value: TTaskValue
     isDone: boolean
 }
 type ITask = TTask[];
@@ -15,7 +16,7 @@ const key: TStorageKey = 'tasks';
 
 function Todo() {
     const [tasks, setTasks] = React.useState<ITask>([])
-    const [taskValue, setTaskValue] = React.useState<string>('');
+    const [taskValue, setTaskValue] = React.useState<TTaskValue>('');
 
     const onChangeItem = (key: TTask['key']) => () => {
         setTasks(tasks.map((e: TTask) => {
